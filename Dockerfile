@@ -1,0 +1,41 @@
+###########################################################
+#
+# Dockerfile for tfk-seneca-mesh-ldap
+#
+###########################################################
+
+# Setting the base to nodejs 4.4.7
+FROM mhart/alpine-node:4.4.7
+
+# Maintainer
+MAINTAINER Jonas Enge
+
+#### Begin setup ####
+
+# Installs git
+RUN apk add --update --no-cache git
+
+# Extra tools for native dependencies
+RUN apk add --no-cache make gcc g++ python
+
+# Bundle app source
+COPY . /src
+
+# Change working directory
+WORKDIR "/src"
+
+# Install dependencies
+RUN npm install --production
+
+# Env variables
+ENV TFK_SENECA_MESH_LDAP_TAG tfk-seneca-mesh-ldap                    
+ENV TFK_SENECA_MESH_LDAP_HOST localhost
+ENV TFK_SENECA_MESH_LDAP_PORT 8000
+ENV TFK_SENECA_MESH_LDAP_URL ldap://host.domain.no:389
+ENV TFK_SENECA_MESH_LDAP_BIND_DN CN=username,OU=TFK,DC=domain,DC=domain,DC=domain
+ENV TFK_SENECA_MESH_LDAP_BIND_SECRET secret
+ENV TFK_SENECA_MESH_LDAP_BASE_DN OU=TFK,dc=domain,dc=domain,DC=domain
+ENV TFK_SENECA_MESH_LDAP_GROUP_DN CN=groupName,OU=TFK,DC=domain,DC=domain,DC=domain
+
+# Startup
+CMD ["node", "service.js", "--seneca-log=type:act"]

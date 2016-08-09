@@ -1,0 +1,49 @@
+{
+  "name": "tfk-seneca-mesh-ldap",
+  "description": "Adds user to group in LDAP",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Jonas Enge",
+    "email": "jonas.enge@gmail.com",
+    "url": "https://github.com/maccyber"
+  },
+  "keywords": [
+    "ldap",
+    "group",
+    "tfk",
+    "Telemark fylkeskommune"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/telemark/tfk-seneca-mesh-ldap.git"
+  },
+  "bugs": {
+    "url": "http://github.com/telemark/tfk-seneca-mesh-ldap/issues"
+  },
+  "homepage": "https://github.com/telemark/tfk-seneca-mesh-ldap",
+  "engines": {
+    "node": ">=4.4.7"
+  },
+  "main": "service.js",
+  "scripts": {
+    "test": "standard && nsp check && tap --reporter=spec test/*.js",
+    "coverage": "tap test/*.js --coverage",
+    "coveralls": "tap --cov --coverage-report=lcov test/*.js && cat coverage/lcov.info | coveralls",
+    "start": "node service.js",
+    "isolated": "TFK_SENECA_MESH_LDAP_ISOLATED=1 node service.js",
+    "setup": "npm install && node setup.js"
+  },
+  "devDependencies": {
+    "coveralls": "2.11.12",
+    "nsp": "2.6.1",
+    "standard": "7.1.2",
+    "tap": "6.3.0"
+  },
+  "dependencies": {
+    "seneca": "2.1.0",
+    "seneca-balance-client": "0.5.0",
+    "seneca-mesh": "0.8.0",
+    "ldapjs": "1.0.0"
+  }
+}
