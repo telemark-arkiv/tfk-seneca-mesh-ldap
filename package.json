@@ -1,7 +1,7 @@
 {
   "name": "tfk-seneca-mesh-ldap",
   "description": "Adds user to group in LDAP",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": {
     "name": "Jonas Enge",
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/telemark/tfk-seneca-mesh-ldap",
   "engines": {
-    "node": ">=4.4.7"
+    "node": ">=4.6.1"
   },
   "main": "service.js",
   "scripts": {
