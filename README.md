@@ -1,5 +1,7 @@
 # tfk-seneca-mesh-ldap
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/telemark/tfk-seneca-mesh-ldap.svg)](https://greenkeeper.io/)
+
 Adds user to group in LDAP
 
 ## Usage
